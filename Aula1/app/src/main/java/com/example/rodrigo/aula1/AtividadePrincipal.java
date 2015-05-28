@@ -1,9 +1,11 @@
 package com.example.rodrigo.aula1;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class AtividadePrincipal extends ActionBarActivity {
@@ -12,8 +14,54 @@ public class AtividadePrincipal extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atividade_principal);
+
+        showToast("Criando");
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        showToast("Iniciando");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showToast("Continuando");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        showToast("Pausando");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        showToast("Parando");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showToast("Reiniciando");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        showToast("Destruindo");
+    }
+
+
+    private void showToast(String text) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
